@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if username %}
+    Hi, {{ username }}!
+    {% else %}
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh">
+            <form method="POST" class="col-sm-5 col-md-4 col-lg-2 col-xl-2 align-items-center">
+                {{ form.hidden_tag() }}
+                <div class="row p-1">
+                    {{ form.username.label(class="form-label ps-0", text="Nazwa użytkownika") }}
+                    {{ form.username(class="form-control", type="text") }}
+                </div>
+                <div class="row p-1">
+                    {{ form.password.label(class="form-label ps-0", text="Hasło") }}
+                    {{ form.password(class="form-control", type="password") }}
+                </div>
+                <div class="row p-1">
+                    {{ form.email.label(class="form-label ps-0", text="Email") }}
+                    {{ form.email(class="form-control", type="email") }}
+                </div>
+                <div class="row p-1">
+                    <span class="ps-0">Masz już konto? <a href="{{ url_for('login') }}">Zaloguj się!</a></span>
+                </div>
+                <div class="row p-1 d-flex justify-content-center">
+                    {{ form.registerSubmit(class="row btn btn-dark m-1 w-50", value="Zarejestruj") }}
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+{% endblock %}
