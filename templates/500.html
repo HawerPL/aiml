@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <div class="d-flex text-center" style="height: 90vh">
+        <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <div class="px-3">
+                <h1>Error {{ error_code }}</h1>
+                <p class="lead">{{ error }}</p>
+            </div>
+            <div class="mt-auto"></div>
+        </div>
+    </div>
 {% endblock %}
