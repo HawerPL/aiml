@@ -26,6 +26,15 @@
                 <div class="row p-1">
                     <span class="ps-0">Masz już konto? <a href="{{ url_for('login') }}">Zaloguj się!</a></span>
                 </div>
+                {% if form.errors %}
+                    {% for errors in form.errors.values() %}
+                    <div class="row p-1">
+                        {% for error in errors %}
+                            <span class="text-danger text-center">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="row p-1 d-flex justify-content-center">
                     {{ form.registerSubmit(class="row btn btn-dark m-1 w-50", value="Zarejestruj") }}
                 </div>
