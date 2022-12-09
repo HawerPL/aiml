@@ -91,6 +91,7 @@ def login():
 def logout():
     logout_user()
     session['id'] = None
+    session['username'] = None
     return render_template('index.html')
 
 
@@ -115,6 +116,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        session['id'] = user.get_id()
+        session['username'] = user.username
         return redirect(url_for('home'))
         form.password
         form.username.data, form.password.data, form.email.data, form.confirmPassword = '', '', '', ''
@@ -128,7 +131,7 @@ def register():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('home.html')
+    return render_template('home.html', session=session)
 
 
 @app.errorhandler(404)

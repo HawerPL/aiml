@@ -5,7 +5,7 @@
     Hi, {{ username }}!
     {% else %}
         <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh">
-            <form method="POST" class="col-sm-5 col-md-4 col-lg-2 col-xl-2 align-items-center">
+            <form method="POST" id="form-register" class="col-sm-5 col-md-4 col-lg-2 col-xl-2 align-items-center">
                 {{ form.hidden_tag() }}
                 <div class="row p-1">
                     {{ form.username.label(class="form-label ps-0", text="Nazwa użytkownika") }}
@@ -13,24 +13,24 @@
                 </div>
                 <div class="row p-1">
                     {{ form.email.label(class="form-label ps-0", text="Email") }}
-                    {{ form.email(class="form-control", type="email") }}
+                    {{ form.email(class="form-control", type="text") }}
                 </div>
                 <div class="row p-1">
                     {{ form.password.label(class="form-label ps-0", text="Hasło") }}
                     {{ form.password(class="form-control", type="password") }}
                 </div>
                 <div class="row p-1">
-                    {{ form.confirmPassword.label(class="form-label ps-0", text="Hasło") }}
+                    {{ form.confirmPassword.label(class="form-label ps-0", text="Powtórz hasło") }}
                     {{ form.confirmPassword(class="form-control", type="password") }}
                 </div>
                 <div class="row p-1">
-                    <span class="ps-0">Masz już konto? <a href="{{ url_for('login') }}">Zaloguj się!</a></span>
+                    <span class="ps-0">Masz już konto? <a id="login-link" href="{{ url_for('login') }}">Zaloguj się!</a></span>
                 </div>
                 {% if form.errors %}
                     {% for errors in form.errors.values() %}
                     <div class="row p-1">
                         {% for error in errors %}
-                            <span class="text-danger text-center">{{ error }}</span>
+                            <span class="text-danger text-center form-error">{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% endfor %}

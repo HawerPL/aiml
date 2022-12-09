@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="d-flex justify-content-center align-items-center" style="min-height: 90vh">
-        <form method="POST" class="col-sm-5 col-md-4 col-lg-2 col-xl-2 align-items-center">
+        <form method="POST" id="form-login" class="col-sm-5 col-md-4 col-lg-2 col-xl-2 align-items-center">
             {{ form.hidden_tag() }}
             <div class="row p-1">
                 {{ form.username.label(class="form-label ps-0", text="Nazwa użytkownika") }}
@@ -12,13 +12,13 @@
                 {{ form.password(class="form-control", type="password") }}
             </div>
             <div class="row p-1">
-                <span class="ps-0">Nie masz konta? <a href="{{ url_for('register') }}">Stwórz je!</a></span>
+                <span class="ps-0">Nie masz konta? <a id="register-link" href="{{ url_for('register') }}">Stwórz je!</a></span>
             </div>
             {% if form.errors %}
                 {% for errors in form.errors.values() %}
                 <div class="row p-1">
                     {% for error in errors %}
-                        <span class="text-danger text-center">{{ error }}</span>
+                        <span class="text-danger text-center form-error">{{ error }}</span>
                     {% endfor %}
                 </div>
                 {% endfor %}

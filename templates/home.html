@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-    Only for logged users
+    <div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom" id="welcome-message">Hi, {{ session['username'] }}!</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+            <div>TEKST TEKST</div>
+        </div>
+        <div class="col d-flex align-items-start">
+
+        </div>
+        <div class="col d-flex align-items-start">
+
+        </div>
+    </div>
+    </div>
 {% endblock %}
